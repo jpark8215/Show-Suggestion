@@ -31,6 +31,11 @@ data = data[["Name",
 data.head()
 # print(data)
 
+# to vector
+# text_data = data_arr
+# vector = SentenceTransformer('distilbert-base-nli-mean-tokens')
+# embeddings = vector.encode(text_data, show_progress_bar=True)
+
 # create the transform
 vectorizer = CountVectorizer(stop_words='english')
 # vectorizer = CountVectorizer()
