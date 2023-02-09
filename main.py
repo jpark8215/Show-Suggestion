@@ -55,7 +55,7 @@ vector = vectorizer.transform(data)
 cos_sim_data = pd.DataFrame(cosine_similarity(vector))
 
 
-# print("cos sim data: \n", cos_sim_data)
+print("cos sim data: \n", cos_sim_data)
 
 
 def give_recommendations(index, print_recommendation=False, print_recommendation_synopsis=False, print_genres=False):
@@ -86,12 +86,11 @@ def give_recommendations(index, print_recommendation=False, print_recommendation
 
 
 # plot recommendation
-plt.figure(figsize=(10, 10))
 for q in range(1, 3):
-    plt.subplot(2, 2, q)
+    plt.subplot(2, 1, q)
     index = np.random.choice(np.arange(0, len(cos_sim_data)))
     to_plot_data = cos_sim_data.drop(index, axis=1)
-    plt.plot(to_plot_data.loc[index], '.', color='firebrick')
+    plt.plot(to_plot_data.loc[index], '.', color='blue')
     recomm_index = give_recommendations(index)
     x = recomm_index['Index']
     y = cos_sim_data.loc[index][x].tolist()
@@ -105,7 +104,6 @@ for q in range(1, 3):
         k = k + 1
 
     plt.ylabel('Cosine Similarity')
-    plt.ylim(0, 1)
     plt.show()
 
 # given watched show
